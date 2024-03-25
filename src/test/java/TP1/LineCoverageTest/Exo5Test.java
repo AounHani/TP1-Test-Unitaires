@@ -1,0 +1,34 @@
+package TP1.LineCoverageTest;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.example.Exo5;
+import org.example.Exo5Correction;
+import org.junit.jupiter.api.Test;
+
+public class Exo5Test {
+
+    @Test
+    public void testToRoman() {
+        // Test cas standard
+        assertEquals("II", Exo5Correction.toRoman(2));
+        assertEquals("IV", Exo5Correction.toRoman(4));
+        assertEquals("IX", Exo5Correction.toRoman(9));
+        assertEquals("XLII", Exo5Correction.toRoman(42));
+        assertEquals("XCIX", Exo5Correction.toRoman(99));
+        assertEquals("CDXLIV", Exo5Correction.toRoman(444));
+        assertEquals("CMXCIX", Exo5Correction.toRoman(999));
+
+        // Test cas limite inférieur
+        assertThrows(IllegalArgumentException.class, () -> {
+            Exo5Correction.toRoman(0);
+        });
+
+        // Test cas limite supérieur
+        assertThrows(IllegalArgumentException.class, () -> {
+            Exo5Correction.toRoman(4000);
+        });
+    }
+}
+
